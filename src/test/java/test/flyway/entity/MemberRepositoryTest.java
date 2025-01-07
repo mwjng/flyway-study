@@ -5,14 +5,15 @@ import static org.assertj.core.api.Assertions.tuple;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
-import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
 @Transactional
+@Sql("/data/test-member-data.sql")
 class MemberRepositoryTest {
 
     @Autowired
@@ -26,11 +27,17 @@ class MemberRepositoryTest {
 
         final List<Member> members = memberRepository.findAll();
 
+        assertThat(members).hasSize(4);
+    }
+
+    @Test
+    void findAll() {
+        final List<Member> members = memberRepository.findAll();
         assertThat(members).hasSize(2)
-            .extracting("name", "email")
+            .extracting("name", "contact")
             .containsExactlyInAnyOrder(
-                tuple("name1", "abc@abc.com"),
-                tuple("name2", "abc@abc.com")
+                tuple("name1", "000-0000-0000"),
+                tuple("name2", "111-1111-1111")
             );
     }
 
