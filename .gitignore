@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 
 application-secret.yml
+/mysql
 
 ### STS ###
 .apt_generated
