@@ -24,6 +24,11 @@ jobs:
     - name: gradlew 권한 부여
       run: chmod +x gradlew
 
+    - name: Docker Compose 설치
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
+
     - name: mysql 실행
       run: docker-compose up -d
 
