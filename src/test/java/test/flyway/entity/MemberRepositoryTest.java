@@ -43,12 +43,11 @@ class MemberRepositoryTest {
     }
 
     private Member getMember(final String name) {
-        Member member = Member.builder()
+        return Member.builder()
             .name(name)
             .email("abc@abc.com")
             .password("1234")
             .contact("000-0000-0000")
             .build();
-        return member;
     }
 }
