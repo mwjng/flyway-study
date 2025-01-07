@@ -27,17 +27,18 @@ class MemberRepositoryTest {
 
         final List<Member> members = memberRepository.findAll();
 
-        assertThat(members).hasSize(4);
+        assertThat(members).hasSize(5);
     }
 
     @Test
     void findAll() {
         final List<Member> members = memberRepository.findAll();
-        assertThat(members).hasSize(2)
+        assertThat(members).hasSize(3)
             .extracting("name", "contact")
             .containsExactlyInAnyOrder(
                 tuple("name1", "000-0000-0000"),
-                tuple("name2", "111-1111-1111")
+                tuple("name2", "111-1111-1111"),
+                tuple("name3", "222-2222-2222")
             );
     }
 
